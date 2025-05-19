@@ -1,5 +1,0 @@
-/writable/*
-.env
-vendor/
-.env.*
-/public/uploads/*
