@@ -1,7 +1,7 @@
 services:
   - type: web
     name: admin-imagenes-backend
-    env: php
-    buildCommand: ""
-    startCommand: php -S 0.0.0.0:10000 -t public
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
     rootDir: .
