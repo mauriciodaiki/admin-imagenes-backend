@@ -1,21 +1,26 @@
 FROM php:8.2-cli
 
-# Instalar herramientas necesarias
+# Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
     zip \
     libzip-dev \
-    && docker-php-ext-install zip pdo pdo_mysql
+    libicu-dev \
+    && docker-php-ext-install \
+    intl \
+    pdo \
+    pdo_mysql \
+    zip
 
 # Instalar Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Crear carpeta de la app
+# Crear carpeta de trabajo
 WORKDIR /app
 
-# Copiar el contenido del proyecto
+# Copiar archivos del proyecto
 COPY . .
 
 # Instalar dependencias de PHP
